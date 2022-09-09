@@ -26,8 +26,9 @@ jobs:
 
     - name: Build
       run: |
-        dotnet publish -r win-x64 -c Release --no-self-contained
-        (cd ./TestApp1/bin/Release/net6.0/win-x64/publish && zip -r - .) >app-${{ env.RELEASE_VERSION }}.zip
+        #dotnet publish -r win-x64 -c Release --no-self-contained
+        dotnet publish -f net6.0 -c Release --no-self-contained
+        (cd ./TestApp1/bin/Release/net6.0/publish && zip -r - .) >app-${{ env.RELEASE_VERSION }}.zip
 
     # ARTIFACTS
     - name: Upload Artifact
