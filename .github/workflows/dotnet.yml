@@ -27,10 +27,7 @@ jobs:
     - name: Build
       run: |
         dotnet publish -r win-x64 -c Release --no-self-contained
-        tree
         (cd ./TestApp1/bin/Release/net6.0/win-x64/publish && zip -r - .) >app-${{ env.RELEASE_VERSION }}.zip
-        pwd
-        ls -la
 
     # ARTIFACTS
     - name: Upload Artifact
@@ -38,7 +35,7 @@ jobs:
       with:
         name: release-${{ env.RELEASE_VERSION }}
         path: | 
-          app-1.0.3.zip
+          app-${{ env.RELEASE_VERSION }}.zip
 
     # RELEASE
     - name: Make Release
@@ -47,6 +44,6 @@ jobs:
       with:
         name: release-${{ env.RELEASE_VERSION }}
         files: |
-          app-1.0.3.zip
+          app-${{ env.RELEASE_VERSION }}.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
