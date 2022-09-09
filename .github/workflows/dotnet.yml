@@ -38,8 +38,7 @@ jobs:
       with:
         name: release-${{ env.RELEASE_VERSION }}
         path: | 
-          ./bin/Release/net6.0
-          ./backend/target/backend-${{ env.RELEASE_VERSION }}.jar
+          app-1.0.3.zip
 
     # RELEASE
     - name: Make Release
@@ -48,7 +47,6 @@ jobs:
       with:
         name: release-${{ env.RELEASE_VERSION }}
         files: |
-          ./frontend/frontend-${{ env.RELEASE_VERSION }}.tar.gz
-          ./backend/target/backend-${{ env.RELEASE_VERSION }}.jar
+          app-1.0.3.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
