@@ -28,7 +28,7 @@ jobs:
       run: |
         dotnet publish -r win-x64 -c Release --no-self-contained
         tree
-        (cd ./bin/Release/net6.0/win-x64/publish && zip -r - .) >app-${{ env.RELEASE_VERSION }}.zip
+        (cd ./TestApp1/bin/Release/net6.0/win-x64/publish && zip -r - .) >app-${{ env.RELEASE_VERSION }}.zip
         pwd
         ls -la
 
