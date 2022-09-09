@@ -28,6 +28,9 @@ jobs:
       run: |
         dotnet publish -r win-x64 -c Release --no-self-contained
         tree
+        zip -r app-${{ env.RELEASE_VERSION }}.zip ./bin/Release/net6.0/win-x64/publish
+        pwd
+        ls -la
 
     # ARTIFACTS
     - name: Upload Artifact
